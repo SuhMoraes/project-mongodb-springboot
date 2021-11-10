@@ -6,11 +6,10 @@ import com.suhmoraes.projectmongodbandspringboot.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -37,6 +36,14 @@ public class UserController {
         User user = service.findById(id);
         // Converte cada objeto Entity para DTO
         return ResponseEntity.ok().body(new UserDTO(user)); // Responde a requisição com OK e no corpo(.body()) será a resposta
+    }
+
+    @PostMapping()
+    public ResponseEntity<Void> create(@RequestBody UserDTO userDTO) {
+        User user = service.fromDTO(userDTO);
+        user = service.insert(user);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}").buildAndExpand(user.getId()).toUri();
+        return ResponseEntity.created(uri).build();
     }
 
 }

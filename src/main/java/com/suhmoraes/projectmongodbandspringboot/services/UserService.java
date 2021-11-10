@@ -1,5 +1,6 @@
 package com.suhmoraes.projectmongodbandspringboot.services;
 
+import com.suhmoraes.projectmongodbandspringboot.dto.UserDTO;
 import com.suhmoraes.projectmongodbandspringboot.entities.User;
 import com.suhmoraes.projectmongodbandspringboot.exception.ObjectNotFoundException;
 import com.suhmoraes.projectmongodbandspringboot.repository.UserRepository;
@@ -24,6 +25,16 @@ public class UserService {
         Optional<User> user = repo.findById(id); // Busca o user pelo id
         // Caso o usuário não seja encontrado...
         return user.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado")); // lança uma exception
+    }
+
+    public User insert(User user ){
+        return repo.insert(user);
+    }
+
+    public User fromDTO(UserDTO userDTO){
+        return new User(userDTO.getId(),
+                        userDTO.getEmail(),
+                        userDTO.getName());
     }
 }
 
