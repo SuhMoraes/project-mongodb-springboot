@@ -36,6 +36,15 @@ public class UserService {
                         userDTO.getEmail(),
                         userDTO.getName());
     }
+
+    public void delete(String id) {
+        if(!(findById(id) == null)) {
+            repo.deleteById(id);
+        }
+
+    }
+
+
 }
 
 

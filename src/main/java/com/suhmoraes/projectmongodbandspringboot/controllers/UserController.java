@@ -38,12 +38,11 @@ public class UserController {
         return ResponseEntity.ok().body(new UserDTO(user)); // Responde a requisição com OK e no corpo(.body()) será a resposta
     }
 
-    @PostMapping()
-    public ResponseEntity<Void> create(@RequestBody UserDTO userDTO) {
-        User user = service.fromDTO(userDTO);
-        user = service.insert(user);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}").buildAndExpand(user.getId()).toUri();
-        return ResponseEntity.created(uri).build();
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable String id) {
+        service.delete(id);
+        return ResponseEntity.noContent().build();
+
     }
 
 }
