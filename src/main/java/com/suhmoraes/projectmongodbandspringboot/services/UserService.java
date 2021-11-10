@@ -4,7 +4,6 @@ import com.suhmoraes.projectmongodbandspringboot.dto.UserDTO;
 import com.suhmoraes.projectmongodbandspringboot.entities.User;
 import com.suhmoraes.projectmongodbandspringboot.exception.ObjectNotFoundException;
 import com.suhmoraes.projectmongodbandspringboot.repository.UserRepository;
-import com.sun.jdi.ObjectCollectedException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,19 +30,29 @@ public class UserService {
         return repo.insert(user);
     }
 
-    public User fromDTO(UserDTO userDTO){
-        return new User(userDTO.getId(),
-                        userDTO.getEmail(),
-                        userDTO.getName());
-    }
-
-    public void delete(String id) {
+    public void deleteById(String id) {
         if(!(findById(id) == null)) {
             repo.deleteById(id);
         }
 
     }
 
+    public User update(User user) {
+        User newUser = repo.findById(user.getId()).get();
+        updateData(newUser, user); // -> Responsável por copiar os dados
+        return repo.save(newUser);
+    }
+
+    private void updateData(User newUser, User user) {
+        newUser.setName(user.getName());
+        newUser.setEmail(user.getEmail());
+    }
+
+    public User fromDTO(UserDTO userDTO){
+        return new User(userDTO.getId(),
+                userDTO.getEmail(),
+                userDTO.getName());
+    }
 
 }
 

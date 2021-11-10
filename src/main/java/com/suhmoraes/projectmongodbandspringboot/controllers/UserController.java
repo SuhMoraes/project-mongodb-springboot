@@ -40,9 +40,16 @@ public class UserController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable String id) {
-        service.delete(id);
+        service.deleteById(id);
         return ResponseEntity.noContent().build();
 
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Void> update(@RequestBody UserDTO userDTO, @PathVariable String id) {
+        User user = service.fromDTO(userDTO);
+        user.setId(id);
+        user = service.update(user);
+        return ResponseEntity.ok().build();
+    }
 }
