@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,6 +30,13 @@ public class UserController {
         List<UserDTO> listDto = list.stream().map(x -> new UserDTO(x)).collect(Collectors.toList());
 
         return ResponseEntity.ok().body(listDto); // Responde a requisição com OK e no corpo(.body()) será a resposta
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<UserDTO> findByID(@PathVariable String id) {
+        User user = service.findById(id);
+        // Converte cada objeto Entity para DTO
+        return ResponseEntity.ok().body(new UserDTO(user)); // Responde a requisição com OK e no corpo(.body()) será a resposta
     }
 
 }

@@ -5,9 +5,4 @@ spring:
   data:
     mongodb:
       uri: 'mongodb://localhost:27017/project_mongo_spring'
-logging:
-  level:
-    org:
-      hibernate:
-        SQL:
-          DEBUG
+show-sql: true
