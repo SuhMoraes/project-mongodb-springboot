@@ -1,5 +1,6 @@
 package com.suhmoraes.projectmongodbandspringboot.entities;
 
+import com.suhmoraes.projectmongodbandspringboot.dto.AuthorDTO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -13,7 +14,7 @@ public class Post implements Serializable {
     @Id
     private String id;
 
-    private User author;
+    private AuthorDTO author;
 
     private Date date;
 
@@ -24,7 +25,7 @@ public class Post implements Serializable {
     public Post() {
     }
 
-    public Post(String id, User author, Date date, String title, String body) {
+    public Post(String id, AuthorDTO author, Date date, String title, String body) {
         this.id = id;
         this.author = author;
         this.date = date;
@@ -40,11 +41,11 @@ public class Post implements Serializable {
         this.id = id;
     }
 
-    public User getAuthor() {
+    public AuthorDTO getAuthor() {
         return author;
     }
 
-    public void setAuthor(User author) {
+    public void setAuthor(AuthorDTO author) {
         this.author = author;
     }
 
