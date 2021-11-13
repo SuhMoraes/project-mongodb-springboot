@@ -1,11 +1,14 @@
 package com.suhmoraes.projectmongodbandspringboot.entities;
 
 import com.suhmoraes.projectmongodbandspringboot.dto.AuthorDTO;
+import com.suhmoraes.projectmongodbandspringboot.dto.CommentsDTO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 @Document
@@ -21,6 +24,8 @@ public class Post implements Serializable {
     private String title;
 
     private String body;
+
+    private List<CommentsDTO> comments = new ArrayList<>();
 
     public Post() {
     }
@@ -71,6 +76,14 @@ public class Post implements Serializable {
 
     public void setBody(String body) {
         this.body = body;
+    }
+
+    public List<CommentsDTO> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<CommentsDTO> comments) {
+        this.comments = comments;
     }
 
     @Override

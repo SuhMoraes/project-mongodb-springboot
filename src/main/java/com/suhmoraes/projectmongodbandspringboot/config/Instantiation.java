@@ -1,6 +1,7 @@
 package com.suhmoraes.projectmongodbandspringboot.config;
 
 import com.suhmoraes.projectmongodbandspringboot.dto.AuthorDTO;
+import com.suhmoraes.projectmongodbandspringboot.dto.CommentsDTO;
 import com.suhmoraes.projectmongodbandspringboot.entities.Post;
 import com.suhmoraes.projectmongodbandspringboot.entities.User;
 import com.suhmoraes.projectmongodbandspringboot.repository.PostRepository;
@@ -40,9 +41,17 @@ public class Instantiation implements CommandLineRunner {
         Post post1 = new Post(null, new AuthorDTO(fernanda), sdf.parse("11/11/2021"), "Bora Estudar!!","Porque dinheiro não nasce em árvore.");
         Post post2 = new Post(null, new AuthorDTO(fernanda), sdf.parse("11/10/2021"), "Conhecendo uma nova stack.","Saindo do comodismo e aprendendo algo novo.");
 
+        CommentsDTO c1 =  new CommentsDTO("É isso aí, sempre aprimorando os conhecimentos", sdf.parse("11/10/2021"), new AuthorDTO(alex));
+        CommentsDTO c2 =  new CommentsDTO("O aprendizado nunca é demais", sdf.parse("13/10/2021"), new AuthorDTO(ruy));
+        CommentsDTO c3 =  new CommentsDTO("O tempo passa estudando ou não. Então melhor estudar do que ver o tempo passar." , sdf.parse("11/10/2021"), new AuthorDTO(alex));
+
+        post1.getComments().addAll(Arrays.asList(c1,c2));
+        post2.getComments().addAll(Arrays.asList(c3));
+
         postRepository.saveAll(Arrays.asList(post1, post2));
 
         fernanda.getPosts().addAll(Arrays.asList(post1, post2));
+
         userRepository.save(fernanda);
     }
 }
