@@ -1,6 +1,7 @@
 package com.suhmoraes.projectmongodbandspringboot.controllers;
 
 import com.suhmoraes.projectmongodbandspringboot.dto.UserDTO;
+import com.suhmoraes.projectmongodbandspringboot.entities.Post;
 import com.suhmoraes.projectmongodbandspringboot.entities.User;
 import com.suhmoraes.projectmongodbandspringboot.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,14 @@ public class UserController {
         return ResponseEntity.ok().body(new UserDTO(user)); // Responde a requisição com OK e no corpo(.body()) será a resposta
     }
 
+    @PostMapping()
+    public ResponseEntity<Void> create(@RequestBody UserDTO userDTO) {
+        User user = service.fromDTO(userDTO);
+        user = service.insert(user);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}").buildAndExpand(user.getId()).toUri();
+        return ResponseEntity.created(uri).build();
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable String id) {
         service.deleteById(id);
@@ -51,5 +60,11 @@ public class UserController {
         user.setId(id);
         user = service.update(user);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/{id}/posts")
+    public ResponseEntity<List<Post>> findPostD(@PathVariable String id) {
+        User user = service.findById(id);
+        return ResponseEntity.ok().body(user.getPosts()); // Responde a requisição com OK e no corpo(.body()) será a resposta
     }
 }
