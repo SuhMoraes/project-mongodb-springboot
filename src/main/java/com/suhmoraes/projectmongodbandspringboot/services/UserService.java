@@ -34,7 +34,6 @@ public class UserService {
         if(!(findById(id) == null)) {
             repo.deleteById(id);
         }
-
     }
 
     public User update(User user) {
