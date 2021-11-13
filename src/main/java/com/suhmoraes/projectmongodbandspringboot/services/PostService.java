@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -19,7 +20,11 @@ public class PostService {
         Optional<Post> post = repo.findById(id); // Busca o user pelo id
         // Caso o usuário não seja encontrado...
         return post.orElseThrow(() -> new ObjectNotFoundException("Post não encontrado"));
+    }
 
+    // Método de Busca
+    public List<Post> findByTitle(String text) {
+        return repo.findByTitleContainingIgnoreCase(text);
     }
 
 
