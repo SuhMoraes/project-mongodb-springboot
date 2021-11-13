@@ -63,8 +63,9 @@ public class UserController {
     }
 
     @GetMapping("/{id}/posts")
-    public ResponseEntity<List<Post>> findPostD(@PathVariable String id) {
+    public ResponseEntity<List<Post>> findPost(@PathVariable String id) {
         User user = service.findById(id);
         return ResponseEntity.ok().body(user.getPosts()); // Responde a requisição com OK e no corpo(.body()) será a resposta
     }
+
 }
