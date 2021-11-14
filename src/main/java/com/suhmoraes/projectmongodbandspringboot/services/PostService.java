@@ -22,9 +22,14 @@ public class PostService {
         return post.orElseThrow(() -> new ObjectNotFoundException("Post não encontrado"));
     }
 
-    // Método de Busca
+    // Método de Busca sem query
+//    public List<Post> findByTitle(String text) {
+//        return repo.findByTitleContainingIgnoreCase(text);
+//    }
+
+    // Método de Busca com @Query
     public List<Post> findByTitle(String text) {
-        return repo.findByTitleContainingIgnoreCase(text);
+        return repo.searchTitle(text);
     }
 
 
