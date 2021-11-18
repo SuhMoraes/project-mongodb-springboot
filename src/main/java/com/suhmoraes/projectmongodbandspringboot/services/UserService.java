@@ -1,7 +1,7 @@
 package com.suhmoraes.projectmongodbandspringboot.services;
 
 import com.suhmoraes.projectmongodbandspringboot.dto.UserDTO;
-import com.suhmoraes.projectmongodbandspringboot.entities.User;
+import com.suhmoraes.projectmongodbandspringboot.model.User;
 import com.suhmoraes.projectmongodbandspringboot.exception.ObjectNotFoundException;
 import com.suhmoraes.projectmongodbandspringboot.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

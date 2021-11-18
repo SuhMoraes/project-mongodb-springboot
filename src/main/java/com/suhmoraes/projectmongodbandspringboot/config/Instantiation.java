@@ -2,8 +2,8 @@ package com.suhmoraes.projectmongodbandspringboot.config;
 
 import com.suhmoraes.projectmongodbandspringboot.dto.AuthorDTO;
 import com.suhmoraes.projectmongodbandspringboot.dto.CommentsDTO;
-import com.suhmoraes.projectmongodbandspringboot.entities.Post;
-import com.suhmoraes.projectmongodbandspringboot.entities.User;
+import com.suhmoraes.projectmongodbandspringboot.model.Post;
+import com.suhmoraes.projectmongodbandspringboot.model.User;
 import com.suhmoraes.projectmongodbandspringboot.repository.PostRepository;
 import com.suhmoraes.projectmongodbandspringboot.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package com.suhmoraes.projectmongodbandspringboot.repository;
 
-import com.suhmoraes.projectmongodbandspringboot.entities.User;
+import com.suhmoraes.projectmongodbandspringboot.model.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,6 +1,6 @@
 package com.suhmoraes.projectmongodbandspringboot.services;
 
-import com.suhmoraes.projectmongodbandspringboot.entities.Post;
+import com.suhmoraes.projectmongodbandspringboot.model.Post;
 import com.suhmoraes.projectmongodbandspringboot.exception.ObjectNotFoundException;
 import com.suhmoraes.projectmongodbandspringboot.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;

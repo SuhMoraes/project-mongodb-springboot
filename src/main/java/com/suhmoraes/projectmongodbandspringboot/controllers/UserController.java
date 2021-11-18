@@ -1,18 +1,15 @@
 package com.suhmoraes.projectmongodbandspringboot.controllers;
 
 import com.suhmoraes.projectmongodbandspringboot.dto.UserDTO;
-import com.suhmoraes.projectmongodbandspringboot.entities.Post;
-import com.suhmoraes.projectmongodbandspringboot.entities.User;
+import com.suhmoraes.projectmongodbandspringboot.model.Post;
+import com.suhmoraes.projectmongodbandspringboot.model.User;
 import com.suhmoraes.projectmongodbandspringboot.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 

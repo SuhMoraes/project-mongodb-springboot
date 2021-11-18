@@ -1,4 +1,4 @@
-package com.suhmoraes.projectmongodbandspringboot.entities;
+package com.suhmoraes.projectmongodbandspringboot.model;
 
 import com.suhmoraes.projectmongodbandspringboot.dto.AuthorDTO;
 import com.suhmoraes.projectmongodbandspringboot.dto.CommentsDTO;

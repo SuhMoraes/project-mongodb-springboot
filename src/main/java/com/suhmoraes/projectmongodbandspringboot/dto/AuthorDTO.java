@@ -1,6 +1,6 @@
 package com.suhmoraes.projectmongodbandspringboot.dto;
 
-import com.suhmoraes.projectmongodbandspringboot.entities.User;
+import com.suhmoraes.projectmongodbandspringboot.model.User;
 
 import java.io.Serializable;
 

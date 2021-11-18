@@ -1,4 +1,4 @@
-package com.suhmoraes.projectmongodbandspringboot.entities;
+package com.suhmoraes.projectmongodbandspringboot.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;

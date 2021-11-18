@@ -1,6 +1,6 @@
 package com.suhmoraes.projectmongodbandspringboot.repository;
 
-import com.suhmoraes.projectmongodbandspringboot.entities.Post;
+import com.suhmoraes.projectmongodbandspringboot.model.Post;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
